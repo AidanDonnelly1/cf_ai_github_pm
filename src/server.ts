@@ -15,7 +15,7 @@ import {
 } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { processToolCalls, cleanupMessages } from "./utils";
-import { tools, executions } from "./tools";
+import { tools } from "./tools";
 // import { env } from "cloudflare:workers";
 
 const model = openai("gpt-4o-2024-11-20");
@@ -57,7 +57,7 @@ export class Chat extends AIChatAgent<Env> {
           messages: cleanedMessages,
           dataStream: writer,
           tools: allTools,
-          executions
+          executions: {}
         });
 
         const result = streamText({
